@@ -11,6 +11,12 @@ instruction_t function_table[] = {
 	{ "pint", monty_pint },
 	{ "pop", monty_pop },
 	{ "swap", monty_swap },
+	{ "add", monty_add },
+	{ "sub", monty_sub },
+	{ "div", monty_div },
+	{ "mul", monty_mul },
+	{ "mod", monty_mod },
+	{ "nop", monty_nop },
 	{ NULL, NULL }
 };
 
