@@ -13,7 +13,7 @@
 int monty_process_line(FILE *file, char *op, char *param)
 {
 	char line[512];
-	
+
 	op[0] = 0;
 	param[0] = 0;
 	if (fgets(line, 512, file) != NULL)
@@ -47,7 +47,7 @@ int monty_process_lines(stack_t **stack, FILE *file)
 		{
 			break;
 		}
-		
+
 		func = monty_get_function(opcode);
 		if (func == NULL)
 		{
@@ -57,11 +57,11 @@ int monty_process_lines(stack_t **stack, FILE *file)
 		}
 
 		func(stack, param, line_number);
-		
+
 		rc = monty_process_line(file, opcode, param);
 		line_number++;
 	}
-	return rc;
+	return (rc);
 }
 
 /**
@@ -84,7 +84,7 @@ int monty_process_file(char *filename)
 
 	stack = NULL;
 	rc = monty_process_lines(&stack, file);
-	
+
 	if (stack != NULL)
 	{
 		monty_stack_free(stack);

@@ -14,14 +14,14 @@ instruction_t function_table[] = {
 
 /**
 * is_space - main function
-* @c: arguments
+* @op: arguments
 * Return: 0.
 */
 MontyFunction monty_get_function(char *op)
-{	
+{
 	int i = 0;
 
-	while(function_table[i].f != NULL)
+	while (function_table[i].f != NULL)
 	{
 		if (_strcmp(function_table[i].opcode, op) == 0)
 		{

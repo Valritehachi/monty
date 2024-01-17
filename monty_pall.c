@@ -5,9 +5,9 @@
 
 /**
 * monty_pall - main function
-* stack: arguments
-* arg: arguments
-* line_number: arguments
+* @stack: arguments
+* @arg: arguments
+* @line_number: arguments
 * Return: 0.
 */
 void monty_pall(stack_t **stack, char *arg, unsigned int line_number)
@@ -17,7 +17,7 @@ void monty_pall(stack_t **stack, char *arg, unsigned int line_number)
 	arg = arg;
 	line_number = line_number;
 
-	if(stack == NULL || *stack == NULL)
+	if (stack == NULL || *stack == NULL)
 	{
 		return;
 	}
