@@ -74,6 +74,10 @@ int  monty_read_command(char *line, char *op, char *param)
 			return (0);
 		}
 		d = param;
+		if (*s =='-')
+		{
+			*d++ = *s++;
+		}
 		while (*s != 0 && is_digit(*s) == 0)
 		{
 			*d++ = *s++;
