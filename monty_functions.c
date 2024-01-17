@@ -9,6 +9,7 @@ instruction_t function_table[] = {
 	{ "push", monty_push },
 	{ "pall", monty_pall },
 	{ "pint", monty_pint },
+	{ "pop", monty_pop },
 	{ NULL, NULL }
 };
 
