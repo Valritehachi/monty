@@ -42,4 +42,5 @@ int _strcmp(const char *s1, const char *s2);
 void monty_stack_free(stack_t *head);
 void monty_pint(stack_t **stack, char *arg, unsigned int line_number);
 void monty_pop(stack_t **stack, char *arg, unsigned int line_number);
+void monty_swap(stack_t **stack, char *arg, unsigned int line_number);
 
