@@ -20,6 +20,7 @@ instruction_t function_table[] = {
 	{ "pchar", monty_pchar },
 	{ "pstr", monty_pstr },
 	{ "rotl", monty_rotl },
+	{ "rotr", monty_rotr },
 	{ NULL, NULL }
 };
 
