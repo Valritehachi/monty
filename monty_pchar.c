@@ -16,7 +16,7 @@ void monty_pchar(stack_t **stack, char *arg, unsigned int line_number)
 
 	if (stack == NULL || *stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't pchar, empty\n", line_number);
+		fprintf(stderr, "L%d: can't pchar,stack empty\n", line_number);
 		monty_stack_free(*stack);
 		exit(EXIT_FAILURE);
 	}

@@ -4,7 +4,7 @@
 #include "monty.h"
 
 /**
-* monty_pint - main function
+* monty_swap - main function
 * @stack: arguments
 * @arg: arguments
 * @line_number: arguments
@@ -13,6 +13,7 @@
 void monty_swap(stack_t **stack, char *arg, unsigned int line_number)
 {
 	stack_t *temp;
+
 	arg = arg;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
