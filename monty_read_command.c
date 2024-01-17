@@ -74,7 +74,7 @@ int  monty_read_command(char *line, char *op, char *param)
 			return (0);
 		}
 		d = param;
-		if (*s =='-')
+		if (*s == '-')
 		{
 			*d++ = *s++;
 		}

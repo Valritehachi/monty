@@ -12,9 +12,10 @@
  */
 void monty_pstr(stack_t **stack, char *arg, unsigned int line_number)
 {
-    stack_t *current;
+	stack_t *current;
+
 	line_number = line_number;
-    	arg = arg;
+	arg = arg;
 
 	current = *stack;
 	while (current)

@@ -14,21 +14,21 @@ void monty_rotl(stack_t **stack, char *arg, unsigned int line_number)
 {
 	stack_t *temp, *last;
 
-	arg = arg; 
+	arg = arg;
 	line_number = line_number;
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	if (stack == NULL || *stack == NULL)
 	{
 		return;
 	}
-	temp = *stack;
-	last = *stack;
-
-	*stack = temp->next;
-	temp->next = NULL;
-	while (last->next != NULL)
+	temp = monty_stack_pop(stack);
+	if (temp == NULL)
 	{
-		last = last->next;
+		return;
 	}
-
-	last->next = temp;
+	last = monty_stack_append(stack, temp->n);
+	free(temp);
+	if (last == NULL)
+	{
+		exit(EXIT_FAILURE);
+	}
 }

@@ -15,7 +15,9 @@ void monty_push(stack_t **stack, char *arg, unsigned int line_number)
 {
 	int value;
 
-	if (arg == NULL || *arg == 0 || atoi(arg) == 0)
+	int badarg = (arg != NULL && *arg != '0' && atoi(arg) == 0);
+
+	if (arg == NULL || *arg == 0 || badarg)
 	{
 		fprintf(stderr, "%d: usage: push integer\n", line_number);
 		monty_stack_free(*stack);
