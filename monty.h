@@ -14,6 +14,8 @@ typedef struct stack_s
         struct stack_s *next;
 } stack_t;
 
+typedef void (*MontyFunction)(stack_t **stack, char *arg, unsigned int line_number);
+
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -25,8 +27,17 @@ typedef struct stack_s
 typedef struct instruction_s
 {
         char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+        MontyFunction f;
 } instruction_t;
 
 int monty_read_line(FILE *file, char *op, char *param);
 int monty_process_file(char *filename);
+int  monty_read_command(char *line, char *op, char *param);
+void monty_push(stack_t **stack, char *arg, unsigned int line_number);
+void monty_pall(stack_t **stack, char *arg, unsigned int line_number);
+stack_t *monty_stack_pop(stack_t **head);
+stack_t *monty_stack_push(stack_t **h, int n);
+MontyFunction monty_get_function(char *op);
+int _strcmp(const char *s1, const char *s2);
+void monty_stack_free(stack_t *head);
+

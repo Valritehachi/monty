@@ -3,54 +3,6 @@
 #include <unistd.h>
 #include "monty.h"
 
-
-int is_space(char c)
-{
-	return (c <= 32 ? 0 : -1);
-}
-
-int  monty_read_command(char *line, char *op, char *param)
-{
-	char *s, *d;
-	
-	s =  line;
-	op[0]  	= 0;
-	param[0] = 0;
-
-	if (*s != 0) 
-	{
-		while(*s != 0 && is_space(*s) == 0)
-		{
-			s++;
-		}
-		if (*s == 0)
-		{
-			return (0);	
-		}
-		d = op;
-		while(*s != 0 && is_space(*s) == -1)
-		{
-			*d++ = *s++;
-		}
-		*d = 0;
-		while(*s != 0 && is_space(*s) == 0)
-                {
-                        s++;
-                }
-		if(*s == 0)
-		{
-			return (0);;
-		}
-		d = param;
-		while(*s != 0 && is_space(*s) == -1)
-                {
-                        *d++ = *s++;
-                }
-                *d = 0;
-	}
-	return (0);
-}
-
 /**
 * monty_process_line - main function
 * @op: arguments
@@ -64,15 +16,52 @@ int monty_process_line(FILE *file, char *op, char *param)
 	
 	op[0] = 0;
 	param[0] = 0;
-	while (fgets(line, 512, file) != NULL)
+	if (fgets(line, 512, file) != NULL)
 	{
-		printf("read line: [%s]",line);
-		if (monty_read_command(line, op, param) == 0)
+		if (monty_read_command(line, op, param) != 0)
 		{
-			printf("op: %s params: %s\n", op, param);
+			return (EXIT_FAILURE);
 		}
 	}
 	return (0);
+}
+/**
+* monty_process_lines - main function
+* @file: arguments
+* @stack: arguments
+* Return: 0.
+*/
+
+int monty_process_lines(stack_t **stack, FILE *file)
+{
+	char opcode[256];
+	char param[256];
+	int rc;
+	MontyFunction func;
+	int line_number = 1;
+
+	rc = monty_process_line(file, opcode, param);
+	while (rc != -1)
+	{
+		if (opcode[0] == 0)
+		{
+			break;
+		}
+		
+		func = monty_get_function(opcode);
+		if (func == NULL)
+		{
+			fprintf(stderr, "L%d: unknown instruction <%s>\n", line_number, opcode);
+			rc = EXIT_FAILURE;
+			break;
+		}
+
+		func(stack, param, line_number);
+		
+		rc = monty_process_line(file, opcode, param);
+		line_number++;
+	}
+	return rc;
 }
 
 /**
@@ -83,9 +72,8 @@ int monty_process_line(FILE *file, char *op, char *param)
 int monty_process_file(char *filename)
 {
 	FILE *file;
-	char opcode[256];
-	char param[256];
 	int rc;
+	stack_t *stack;
 
 	file = fopen(filename, "r");
 	if (file == NULL)
@@ -94,15 +82,12 @@ int monty_process_file(char *filename)
 		return (EXIT_FAILURE);
 	}
 
-	rc = monty_process_line(file, opcode, param);
-	while (rc != -1)
+	stack = NULL;
+	rc = monty_process_lines(&stack, file);
+	
+	if (stack != NULL)
 	{
-		if (opcode[0] == 0)
-		{
-			break;
-		}
-
-		rc = monty_process_line(file, opcode, param);
+		monty_stack_free(stack);
 	}
 
 	fclose(file);
