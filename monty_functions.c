@@ -18,6 +18,7 @@ instruction_t function_table[] = {
 	{ "mod", monty_mod },
 	{ "nop", monty_nop },
 	{ "pchar", monty_pchar },
+	{ "pstr", monty_pstr },
 	{ NULL, NULL }
 };
 
