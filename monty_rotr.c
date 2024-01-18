@@ -12,7 +12,7 @@
  */
 void monty_rotr(stack_t **stack, char *arg, unsigned int line_number)
 {
-	stack_t *temp, *first;
+	stack_t *temp, *node;
 
 	arg = arg;
 	line_number = line_number;
@@ -20,21 +20,14 @@ void monty_rotr(stack_t **stack, char *arg, unsigned int line_number)
 	{
 		return;
 	}
-	temp = monty_stack_pop(stack);
+	temp = monty_stack_shift(stack);
 	if (temp == NULL)
 	{
 		return;
 	}
-	first = *stack;
-    while (first->next != NULL)
-    {
-        first = first->next;
-    }
-
-    first->next = temp;
-    temp->next = NULL;
+	node = monty_stack_push(stack, temp->n);
 	free(temp);
-	if (first == NULL)
+	if (node == NULL)
 	{
 		exit(EXIT_FAILURE);
 	}

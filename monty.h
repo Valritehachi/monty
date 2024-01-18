@@ -53,6 +53,7 @@ void monty_pchar(stack_t **stack, char *arg, unsigned int line_number);
 void monty_pstr(stack_t **stack, char *arg, unsigned int line_number);
 void monty_rotl(stack_t **stack, char *arg, unsigned int line_number);
 void monty_rotr(stack_t **stack, char *arg, unsigned int line_number);
+stack_t *monty_stack_shift(stack_t **head);
 stack_t *monty_stack_append(stack_t **head, const int n);
 
 
