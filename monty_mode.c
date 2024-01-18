@@ -45,9 +45,9 @@ void monty_mode_stack(stack_t **stack, char *arg, unsigned int line_number)
 */
 void monty_mode_queue(stack_t **stack, char *arg, unsigned int line_number)
 {
-        stack = stack;
-        arg = arg;
-        line_number = line_number;
+	stack = stack;
+	arg = arg;
+	line_number = line_number;
 
-        monty_set_mode(1);
+	monty_set_mode(1);
 }

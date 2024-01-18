@@ -29,18 +29,22 @@ int is_digit(char c)
 {
 	return ((c >= '0' && c <= '9') ? 0 : -1);
 }
-
+/**
+* skip_space- main function
+* @str: arguments
+* Return: 0.
+*/
 int skip_spaces(char **str)
 {
 	char *s = *str;
 
 	while (*s != 0 && is_space(*s) == 0)
-        {
+	{
 		s++;
 	}
-  	if ((*s) == 0)
+	if ((*s) == 0)
 	{
- 		return (-1);
+		return (-1);
 	}
 	*str = s;
 	return (0);
@@ -62,7 +66,7 @@ int  monty_read_command(char *line, char *op, char *param)
 	param[0] = 0;
 	if (*s != 0)
 	{
-		if(skip_spaces(&s) == -1)
+		if (skip_spaces(&s) == -1)
 		{
 			return (0);
 		}
