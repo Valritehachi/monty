@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "monty.h"
-
 /**
 * is_space - main function
 * @c: arguments
@@ -12,8 +11,6 @@ int is_space(char c)
 {
 	return (c <= 32 ? 0 : -1);
 }
-
-
 /**
 * is_alpha - main function
 * @c: arguments
@@ -23,7 +20,6 @@ int is_alpha(char c)
 {
 	return  (((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) ? 0 : -1);
 }
-
 /**
 * is_digit- main function
 * @c: arguments
@@ -31,7 +27,23 @@ int is_alpha(char c)
 */
 int is_digit(char c)
 {
-	return ((c >= '0' && c <= '9') || (c == '-' && is_space(c - 1) == 0) ? 0 : -1);
+	return ((c >= '0' && c <= '9') ? 0 : -1);
+}
+
+int skip_spaces(char **str)
+{
+	char *s = *str;
+
+	while (*s != 0 && is_space(*s) == 0)
+        {
+		s++;
+	}
+  	if ((*s) == 0)
+	{
+ 		return (-1);
+	}
+	*str = s;
+	return (0);
 }
 
 /**
@@ -48,14 +60,9 @@ int  monty_read_command(char *line, char *op, char *param)
 	s =  line;
 	op[0]   = 0;
 	param[0] = 0;
-
 	if (*s != 0)
 	{
-		while (*s != 0 && is_space(*s) == 0)
-		{
-			s++;
-		}
-		if (*s == 0)
+		if(skip_spaces(&s) == -1)
 		{
 			return (0);
 		}

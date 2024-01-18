@@ -1,3 +1,6 @@
+#ifndef MONTY_H
+#define MONTY_H
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -55,6 +58,13 @@ void monty_rotl(stack_t **stack, char *arg, unsigned int line_number);
 void monty_rotr(stack_t **stack, char *arg, unsigned int line_number);
 stack_t *monty_stack_shift(stack_t **head);
 stack_t *monty_stack_append(stack_t **head, const int n);
+int monty_get_mode(void);
+void monty_set_mode(int mode);
+FILE *monty_get_file(void);
+void monty_set_file(FILE *file);
+void monty_close_file(void);
+void monty_free_stack(void);
+void monty_cleanup(void);
 
 
-
+#endif

@@ -4,7 +4,6 @@
 
 /**
  * monty_stack_shift - doubly linked list
- * @n: integer
  * @head: integer
  * Return: 0
  */
