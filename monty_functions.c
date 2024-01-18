@@ -21,6 +21,8 @@ instruction_t function_table[] = {
 	{ "pstr", monty_pstr },
 	{ "rotl", monty_rotl },
 	{ "rotr", monty_rotr },
+	{ "queue", monty_mode_queue },
+	{ "stack", monty_mode_stack },
 	{ NULL, NULL }
 };
 

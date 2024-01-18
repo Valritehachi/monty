@@ -65,6 +65,7 @@ void monty_set_file(FILE *file);
 void monty_close_file(void);
 void monty_free_stack(void);
 void monty_cleanup(void);
-
+void monty_mode_stack(stack_t **stack, char *arg, unsigned int line_number);
+void monty_mode_queue(stack_t **stack, char *arg, unsigned int line_number);
 
 #endif

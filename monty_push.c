@@ -24,5 +24,13 @@ void monty_push(stack_t **stack, char *arg, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	value = atoi(arg);
-	monty_stack_push(stack, value);
+
+	if(monty_get_mode() == 0)
+	{
+		monty_stack_push(stack, value);
+	}
+	else
+	{
+		monty_stack_append(stack, value);
+	}
 }
