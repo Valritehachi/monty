@@ -30,7 +30,7 @@ int is_digit(char c)
 	return ((c >= '0' && c <= '9') ? 0 : -1);
 }
 /**
-* skip_space- main function
+* skip_spaces- main function
 * @str: arguments
 * Return: 0.
 */

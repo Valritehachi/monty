@@ -25,7 +25,7 @@ void monty_push(stack_t **stack, char *arg, unsigned int line_number)
 	}
 	value = atoi(arg);
 
-	if(monty_get_mode() == 0)
+	if (monty_get_mode() == 0)
 	{
 		monty_stack_push(stack, value);
 	}

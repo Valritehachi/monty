@@ -67,5 +67,6 @@ void monty_free_stack(void);
 void monty_cleanup(void);
 void monty_mode_stack(stack_t **stack, char *arg, unsigned int line_number);
 void monty_mode_queue(stack_t **stack, char *arg, unsigned int line_number);
+int handle_comments(const char *input_file_path, const char *output_file_path);
 
 #endif

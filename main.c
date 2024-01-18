@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		return (EXIT_FAILURE);
 	}
+	
 	filename = argv[1];
 	if (access(filename, F_OK) == -1)
 	{
@@ -34,6 +35,10 @@ int main(int argc, char *argv[])
 	if (monty_process_file(filename) == -1)
 	{
 		return (EXIT_FAILURE);
+	}
+	if (handle_comments(filename, "output_without_comments.txt") == -1)
+	{
+		return EXIT_FAILURE;
 	}
 
 	return (0);
